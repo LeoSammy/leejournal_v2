@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Styles{
-  static Color primaryColor = const Color(0xFF336AEA);
-  static Color primaryColorDark =const  Color(0xFF2955BB);
-  static Color bgColorDark = const  Color(0xFF0B2239);
+  static Color primaryColor = const Color(0xFFEE7E1C);
+  static Color primaryColorLight = const Color(0xFFF2994C);
+  static Color primaryColorDark =const  Color(0xFFB0590D);
+  static Color bgColorDark = const  Color(0xFF4F3423);
   static Color textColor = const Color(0xFF3b3b3b);
   static Color bgColor = const Color(0xFFF6F7F9);
   static Color corkDark = const Color(0xFF1F1F1F);
@@ -22,6 +23,7 @@ class Styles{
   static const mainAppYellowGlow = Color(0xFFF7B538);
   static const mainAppPurpleMunsell = Color(0xFFB118C8);
   static const mainAppDarkMode = Color(0xFF212228);
+  static const white200 = Color(0xFFe2f0fc);
 
 
   static TextStyle textStyle = TextStyle(fontSize: 16, color: textColor, fontWeight: FontWeight.w500);
@@ -35,7 +37,7 @@ class Styles{
 
   static const greenLive = Color(0xFF08971B);
   static const greenCold = Color(0xFF528C59);
-  static const white200 = Color(0xFFe2f0fc);
+
   static const redDeep = Color(0xFFC55A5A);
   static const redCold = Color(0xFFEBD1D1);
   static const yellowCold = Color(0xFFA8AB00);
