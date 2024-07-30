@@ -1,11 +1,8 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:leejournal/utils/app_layout.dart';
 import 'package:leejournal/utils/utils.dart';
-import 'package:leejournal/widgets/components/draggable_bottom.dart';
 import 'package:leejournal/widgets/components/nav_bar.dart';
 import 'package:leejournal/widgets/normal_text.dart';
 import 'package:leejournal/widgets/small_text.dart';
@@ -36,7 +33,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: const NavBar(),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(16),vertical:AppLayout.getHeight(10) ),
+        padding: EdgeInsets.only(left: AppLayout.getHeight(16),
+            right: AppLayout.getHeight(16),),
         margin: EdgeInsets.only(top: size.height * 0.055),
         child: Column(
           children: [
@@ -52,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                       //Side navigation menu
                       Builder(builder: (BuildContext context) {
                         return IconButton(
-                          padding: EdgeInsets.all(AppLayout.getHeight(10)),
+                          padding: EdgeInsets.all(AppLayout.getHeight(12)),
                           onPressed: () {
                             Scaffold.of(context).openDrawer();
                             print("Scaffold drawer called ");
@@ -60,14 +58,16 @@ class _HomePageState extends State<HomePage> {
                           icon: SizedBox(
                             height: AppLayout.getHeight(50),
                             width: AppLayout.getWidth(50),
-                            child: SvgPicture.asset("assets/svg/menu.svg",),),
+                            child: SvgPicture.asset("assets/svg/menu.svg",
+                              color: Theme.of(context).textTheme.bodyLarge?.color,),),
                           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
                         );
                       }),
                       Gap(AppLayout.getWidth(5)),
                       // Inbox messages and in app notifications
                       IconButton(onPressed: (){print("object");},
-                          icon:  Icon(FluentSystemIcons.ic_fluent_mail_inbox_filled, color: Styles.textColor,)),
+                          icon:  Icon(FluentSystemIcons.ic_fluent_mail_inbox_filled,
+                            color: Theme.of(context).textTheme.bodyLarge?.color,)),
                     ],
                   ),
                   Row(
@@ -80,13 +80,18 @@ class _HomePageState extends State<HomePage> {
                          children: [
                            Row(
                              children: [
-                               NormalText(text: "Hi", fontWeight: FontWeight.w600, ),
+                               NormalText(text: "Hi",
+                                 fontWeight: FontWeight.w600,
+                                 color: Theme.of(context).textTheme.bodyLarge?.color,),
                                Gap(AppLayout.getWidth(5)),
                                //TODO update to show users first name
-                               NormalText(text: "$uName!", fontWeight: FontWeight.w600 ),
+                               NormalText(text: "$uName!",
+                                   fontWeight: FontWeight.w600,
+                                 color: Theme.of(context).textTheme.bodyLarge?.color,),
                              ],
                            ),
-                           SmallText(text: "Good $timeOfDay")
+                           SmallText(text: "Good $timeOfDay",
+                             color: Theme.of(context).textTheme.bodyLarge?.color,)
                          ],
                        ),
                      ),
@@ -113,10 +118,14 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            Expanded(child:  Container(
+              color: Colors.blueGrey,
+              ))
+
           ],
         )
       ),
-     // bottomSheet: DraggableBottom(controller: _controller),
+    //bottomSheet: DraggableBottom(controller: _controller),
     );
   }
 }
