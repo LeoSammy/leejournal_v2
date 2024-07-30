@@ -20,7 +20,7 @@ ThemeData lightTheme(){
 TextTheme textTheme() {
   return TextTheme(
     titleMedium: TextStyle(color: Styles.primaryColor),
-    displaySmall: const TextStyle(color: Styles.mainColorDark),
+    displaySmall: TextStyle(color: Styles.primaryColorDark),
     bodySmall: const TextStyle(color: Styles.textColorWhite),
     bodyMedium: TextStyle(
       color: Styles.textColor,

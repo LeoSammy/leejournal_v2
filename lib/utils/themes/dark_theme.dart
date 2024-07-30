@@ -26,7 +26,7 @@ ThemeData darkTheme() {
 TextTheme textTheme() {
   return TextTheme(
     titleMedium: const TextStyle(color: Styles.textColorWhite),
-    displaySmall: const TextStyle(color: Styles.mainColorDark),
+    displaySmall:  TextStyle(color: Styles.primaryColorDark),
     bodyMedium: TextStyle(
       color: Styles.textColorWhite.withOpacity(0.5),
     ),

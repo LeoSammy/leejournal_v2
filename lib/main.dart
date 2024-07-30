@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:leejournal/screens/home_page.dart';
+import 'package:leejournal/screens/home/home_page.dart';
 import 'package:leejournal/utils/themes/dark_theme.dart';
 import 'package:leejournal/utils/themes/light_theme.dart';
 

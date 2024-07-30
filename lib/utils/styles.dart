@@ -11,9 +11,18 @@ class Styles{
   static Color orangeColor = const Color(0xFFF37B67);
   static Color blueColor = const  Color(0xFF526799);
   static Color kakiColor = const  Color(0xFFd2bdb6);
+  static Color goldColor = const  Color(0xFFFF9A2F);
   static Color textColorLight = const Color(0xFFA7A7A7);
   static Color iconColor = const  Color(0xFF49C9AC);
   static Color white100 = const Color(0xFFE7ECF2);
+  static const mainAppPaynesGray = Color(0xFF59656F);
+  static const mainAppYellowDrops = Color(0xFFFBB304);
+  static const mainAppWebOrange = Color(0xFFFFA500);
+  static const mainAppAuburn = Color(0xFFA22522);
+  static const mainAppYellowGlow = Color(0xFFF7B538);
+  static const mainAppPurpleMunsell = Color(0xFFB118C8);
+  static const mainAppDarkMode = Color(0xFF212228);
+
 
   static TextStyle textStyle = TextStyle(fontSize: 16, color: textColor, fontWeight: FontWeight.w500);
   static TextStyle headLineStyle = TextStyle(fontSize: 26, color: textColor, fontWeight: FontWeight.bold);
@@ -21,13 +30,6 @@ class Styles{
   static TextStyle headLineStyle3 = const TextStyle(fontSize: 17, fontWeight: FontWeight.w500);
   static TextStyle headLineStyle4 = TextStyle(fontSize: 14, color: Colors.grey.shade500, fontWeight: FontWeight.w500);
 //Check and change
-  static const mainColor = Color(0xFF2955BB);
-  static const mainColorLight = Color(0xFF5e72ef);
-  static const mainColorDark = Color(0xFF2955BB);
-  static const mainVariantLight = Color(0xFF8F9BF1);
-  static const mainVariantDark = Color(0xFF0028b9);
-
-
   static const textColorWhite = Color(0xFFFFFFFF);
   static const white = Color(0xFFFFFFFF);
 
