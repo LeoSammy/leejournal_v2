@@ -11,7 +11,7 @@ class DraggableBottom extends StatefulWidget {
 
 class _DraggableBottomState extends State<DraggableBottom> {
  // final _controller = DraggableScrollableController();
-  final _sheet = GlobalKey();
+ // final _sheet = GlobalKey();
 
   @override
   void dispose() {
@@ -21,11 +21,11 @@ class _DraggableBottomState extends State<DraggableBottom> {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      key: _sheet,
+   //   key: _sheet,
       initialChildSize: 0.20,
       maxChildSize: 0.85,
       minChildSize: 0.058,
-      expand: true,
+      expand:false,
       snap: true,
       snapSizes: const [0.5],
       controller: widget.controller,

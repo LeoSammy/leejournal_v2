@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:leejournal/utils/utils.dart';
+import 'package:leejournal/widgets/components/draggable_bottom.dart';
 import 'package:leejournal/widgets/components/nav_bar.dart';
 import 'package:leejournal/widgets/normal_text.dart';
 import 'package:leejournal/widgets/small_text.dart';
@@ -29,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     const String uName = "Leo";
-
     return Scaffold(
       drawer: const NavBar(),
       body: Container(
@@ -39,7 +39,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
-              //color: Colors.red,
+
+              padding: EdgeInsets.only(top: AppLayout.getHeight(8), right: AppLayout.getWidth(8)),
               height: size.height * 0.08,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,14 +51,16 @@ class _HomePageState extends State<HomePage> {
                       //Side navigation menu
                       Builder(builder: (BuildContext context) {
                         return IconButton(
-                          padding: EdgeInsets.all(AppLayout.getHeight(12)),
+                          padding: EdgeInsets.only(left: AppLayout.getHeight(10),
+                              bottom: AppLayout.getHeight(10),
+                              right: AppLayout.getHeight(10)),
                           onPressed: () {
                             Scaffold.of(context).openDrawer();
                             print("Scaffold drawer called ");
                           },
                           icon: SizedBox(
-                            height: AppLayout.getHeight(50),
-                            width: AppLayout.getWidth(50),
+                            height: AppLayout.getHeight(45),
+                            width: AppLayout.getWidth(45),
                             child: SvgPicture.asset("assets/svg/menu.svg",
                               color: Theme.of(context).textTheme.bodyLarge?.color,),),
                           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
@@ -118,14 +121,16 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Expanded(child:  Container(
-              color: Colors.blueGrey,
-              ))
+            Expanded(
+                child:
+            Center(
 
+              )),
           ],
         )
       ),
-    //bottomSheet: DraggableBottom(controller: _controller),
+     bottomSheet: DraggableBottom(controller: _controller),
+
     );
   }
 }
