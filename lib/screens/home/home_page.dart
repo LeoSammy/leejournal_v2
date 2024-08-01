@@ -5,6 +5,8 @@ import 'package:gap/gap.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/components/draggable_bottom.dart';
 import 'package:leejournal/widgets/components/nav_bar.dart';
+import 'package:leejournal/widgets/home_tabs.dart';
+import 'package:leejournal/widgets/mood_view.dart';
 import 'package:leejournal/widgets/normal_text.dart';
 import 'package:leejournal/widgets/small_text.dart';
 
@@ -41,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             Container(
 
               padding: EdgeInsets.only(top: AppLayout.getHeight(8), right: AppLayout.getWidth(8)),
-              height: size.height * 0.08,
+              height: size.height * 0.085,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,10 +124,90 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-                child:
-            Center(
+                child: Container(
+                //  color: Colors.blue,
+                  child: Stack(
+                    children: [
+                      //Main body
+                      SingleChildScrollView(
+                      child: Container(
+                        width: double.maxFinite,
+                        padding: EdgeInsets.all(AppLayout.getHeight(10)),
+                        child: Column(
+                          children: List.generate(50, (index) => Text('Item $index')),
+                        ),
+                      ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          padding: EdgeInsets.only(bottom:size.height * 0.060),
+                          child: HomeTabs(
+                              hTabsWidth: size.width * 0.125,
+                              showWidget: true,
+                              hWidgetA: InkWell(
+                                onTap: (){
+                                  print("show text-pad page");
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Icon(FluentSystemIcons.ic_fluent_pen_settings_regular,
+                                      color: Theme.of(context).textTheme.bodyLarge?.color
+                                  ),
+                                ),
+                              ),
+                              // IconButton(
+                              //   padding:  EdgeInsets.all(5),
+                              //     onPressed: () {
+                              //       print("show text-pad page");
+                              //     },
+                              //     icon: Icon(FluentSystemIcons.ic_fluent_pen_settings_regular,
+                              //         color: Theme.of(context).textTheme.bodyLarge?.color
+                              //     )),
+                              hWidgetB:  InkWell(
+                                onTap: (){
+                                  print("show microphone page");
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Icon(FluentSystemIcons.ic_fluent_mic_on_regular,
+                                      color: Theme.of(context).textTheme.bodyLarge?.color
+                                  ),
+                                ),
+                              ),
+                              // IconButton(
+                              //     padding:  EdgeInsets.all(5),
+                              //     onPressed: () {
+                              //       print("show microphone page");
+                              //     },
+                              //     icon: Icon(FluentSystemIcons.ic_fluent_mic_on_regular,
+                              //         color: Theme.of(context).textTheme.bodyLarge?.color
+                              //     )),
+                              isActiveA: false,
+                              isActiveB: false),
+                        ),
+                      ),
+                      // Mood selector
+                      const Align(
+                        alignment: Alignment.topRight,
+                        child: MoodView(),
+                      ),
+                      //Top Journal and/or Speech to Note tab selector.
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          margin: EdgeInsets.only(top: AppLayout.getHeight(5)),
+                          child: const HomeTabs(firstTab: "Journal" ,
+                            secondTab: "Speak2Note",
+                            isActiveA: false,
+                            isActiveB: false,),
+                        ),
+                      ),
 
-              )),
+                    ],
+                  ),
+                )
+            ),
           ],
         )
       ),

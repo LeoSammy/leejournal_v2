@@ -10,12 +10,14 @@ class NormalText extends StatelessWidget {
   FontWeight fontWeight;
   String fontFamily;
   TextOverflow overFlow;
+  bool? active;
 
   NormalText(
       {super.key,
         this.color = const Color(0xFF000000),
         required this.text,
         this.size = 0,
+         active = false,
         this.textAlign = TextAlign.start,
         this.fontWeight = FontWeight.normal,
         this.fontStyle = FontStyle.normal,
@@ -29,7 +31,7 @@ class NormalText extends StatelessWidget {
       maxLines: 1,
       overflow: overFlow,
       style: TextStyle(
-          color: color,
+          color: active != false ? color : null,
           fontStyle: fontStyle,
            fontFamily: fontFamily,
           fontSize: size == 0 ? AppLayout.getHeight(14) : size,
