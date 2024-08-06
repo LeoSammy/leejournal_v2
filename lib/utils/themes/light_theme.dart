@@ -9,7 +9,7 @@ ThemeData lightTheme(){
     visualDensity: VisualDensity.adaptivePlatformDensity,
     colorScheme: ColorScheme.fromSeed(seedColor: Styles.primaryColor),
     appBarTheme: appBarTheme(),
-    cardColor: Styles.bgColor,
+    cardColor: Styles.whiteCold,
     canvasColor: Styles.white100,
     indicatorColor: Styles.primaryColor,
     textTheme: textTheme(),

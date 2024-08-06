@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/components/draggable_bottom.dart';
+import 'package:leejournal/widgets/components/moment_body.dart';
 import 'package:leejournal/widgets/components/nav_bar.dart';
 import 'package:leejournal/widgets/home_tabs.dart';
 import 'package:leejournal/widgets/mood_view.dart';
@@ -19,8 +20,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
  // final _sheet = GlobalKey();
-  final _controller = DraggableScrollableController();
+ // final _controller = DraggableScrollableController();
+  late DraggableScrollableController _controller;
   String timeOfDay = tod;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+   _controller = DraggableScrollableController();
+  }
+
 
   @override
   void dispose() {
@@ -41,7 +51,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
-
               padding: EdgeInsets.only(top: AppLayout.getHeight(8), right: AppLayout.getWidth(8)),
               height: size.height * 0.085,
               child: Row(
@@ -125,16 +134,75 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
                 child: Container(
-                //  color: Colors.blue,
+              //  color: Colors.blue,
                   child: Stack(
                     children: [
                       //Main body
                       SingleChildScrollView(
-                      child: Container(
-                        width: double.maxFinite,
-                        padding: EdgeInsets.all(AppLayout.getHeight(10)),
-                        child: Column(
-                          children: List.generate(50, (index) => Text('Item $index')),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: size.height * 0.50
+                        ),
+                        child: Container(
+                          margin: EdgeInsets.only(top: size.height * 0.075,
+                              ),
+                          padding: EdgeInsets.only(
+                              bottom: size.height * 0.10,left: AppLayout.getHeight(10),
+                              right: AppLayout.getHeight(10)),
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).cardColor,
+                              borderRadius: BorderRadius.circular(AppLayout.getHeight(8))
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconButton(
+                                     style: ButtonStyle(
+                                       shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                                         RoundedRectangleBorder(
+                                           borderRadius: BorderRadius.circular(AppLayout.getHeight(20)),
+                                           side: BorderSide(
+                                               width: 0.5,
+                                               color: Styles.blueColor),
+                                         ),
+                                       ),
+                                       backgroundColor:  WidgetStateProperty.all<Color>(Colors.white),
+                                     ),
+                                      onPressed: () {
+                                    print("Get back");
+                                  }, icon: const Icon(FluentSystemIcons.ic_fluent_arrow_left_regular)),
+                                  NormalText(text: "New Moment",
+                                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                                    fontWeight: FontWeight.w600,),
+                                  IconButton(
+                                      style: ButtonStyle(
+                                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(AppLayout.getHeight(20)),
+                                            side: BorderSide(
+                                                width: 0.5,
+                                                color: Styles.blueColor),
+                                          ),
+                                        ),
+                                        backgroundColor:  WidgetStateProperty.all<Color>(Styles.white200),
+                                      ),
+                                      onPressed: () {
+                                        print("Save moment");
+                                      }, icon: const Icon(FluentSystemIcons.ic_fluent_checkmark_regular)),
+                                ],
+                              ),
+                              Divider(
+                                height: AppLayout.getHeight(8),
+                                thickness: AppLayout.getHeight(2),
+                                color: Theme.of(context).canvasColor,
+                              ),
+                              // Moment Body
+                              MomentBody(initialText: "Add story...",)
+
+                            ],
+                          ),
                         ),
                       ),
                       ),
@@ -156,14 +224,6 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                              // IconButton(
-                              //   padding:  EdgeInsets.all(5),
-                              //     onPressed: () {
-                              //       print("show text-pad page");
-                              //     },
-                              //     icon: Icon(FluentSystemIcons.ic_fluent_pen_settings_regular,
-                              //         color: Theme.of(context).textTheme.bodyLarge?.color
-                              //     )),
                               hWidgetB:  InkWell(
                                 onTap: (){
                                   print("show microphone page");
@@ -175,14 +235,6 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                              // IconButton(
-                              //     padding:  EdgeInsets.all(5),
-                              //     onPressed: () {
-                              //       print("show microphone page");
-                              //     },
-                              //     icon: Icon(FluentSystemIcons.ic_fluent_mic_on_regular,
-                              //         color: Theme.of(context).textTheme.bodyLarge?.color
-                              //     )),
                               isActiveA: false,
                               isActiveB: false),
                         ),

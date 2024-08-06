@@ -12,15 +12,12 @@ class MoodView extends StatelessWidget {
     final size = AppLayout.getSize(context);
     return Container(
         width: size.width * 0.15,
-       // height: size.height * 0.5,
-        margin: EdgeInsets.only(top: AppLayout.getHeight(60)),
+        margin: EdgeInsets.only(top: size.height * 0.15),
         decoration: BoxDecoration(
          color: Styles.primaryColor.withOpacity(.008),
        //   color: Colors.redAccent,
         ),
-        child: Padding(
-          padding: EdgeInsets.all(AppLayout.getHeight(AppLayout.getHeight(4))),
-          child: Column(
+        child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SmallText(
@@ -32,44 +29,21 @@ class MoodView extends StatelessWidget {
               Stack(
                 children:[
                   MoodChip(
+                    //mSize: ,
                   moodText: ChipText.CS,
-                  chipColor: Styles.mainAppYellowGlow, )],
+                  chipColor: Styles.mainAppYellowGlow, ),
+                ],
               ),
               MoodChip(
                 moodText: ChipText.TB,
                 chipColor:Styles.mainAppPurpleMunsell,
               ),
               MoodChip(
-                moodText: ChipText.NC,
+                moodText: ChipText.UC,
                 chipColor: Styles.mainAppPaynesGray,
               ),
-              // Container(
-              //   padding: const EdgeInsets.all(4.0),
-              // width: 100,
-              //   child: Stack(
-              //     //alignment:new Alignment(x, y)
-              //     children: <Widget>[
-              //       MoodChip(
-              //         moodText: ChipText.CS,
-              //         chipColor: Styles.mainAppYellowGlow, ),
-              //       Positioned(
-              //           bottom: 30.0,
-              //           child: MoodChip(
-              //             moodText: ChipText.TB,
-              //             chipColor:Styles.mainAppPurpleMunsell,
-              //           )),
-              //       Positioned(
-              //         bottom: 60.0,
-              //         child: MoodChip(
-              //           moodText: ChipText.NC,
-              //           chipColor: Styles.mainAppPaynesGray,
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
             ],
           ),
-        ));
+        );
   }
 }

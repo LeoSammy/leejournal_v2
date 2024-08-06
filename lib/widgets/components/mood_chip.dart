@@ -8,11 +8,13 @@ class MoodChip extends StatelessWidget {
   final ChipText moodText;
   int? moodCount;
   final Color? chipColor;
+  final double? mSize;
 
   MoodChip({
     super.key,
     required this.moodText,
     this.moodCount,
+    this.mSize,
     required this.chipColor,
   });
 
@@ -32,14 +34,15 @@ class MoodChip extends StatelessWidget {
                   color: Colors.grey,
                 )
               ]),
-          height: AppLayout.getHeight(33),
-          width:  AppLayout.getHeight(33),
+          height:  mSize ?? AppLayout.getHeight(32),
+          width:  AppLayout.getHeight(32),
           child: Center(
             child: Transform.rotate(
               angle: -45 * math.pi / 180,
-              child: NormalText(
-                fontWeight: FontWeight.w500,
+              child: SmallText(
+                fontWeight: FontWeight.w600,
                 text: moodText.name,
+                color: Theme.of(context).textTheme.bodyLarge!.color,
               ),
             ),
           ),
@@ -51,5 +54,5 @@ class MoodChip extends StatelessWidget {
 enum ChipText {
   CS, //Good Stuff
   TB, //Take back
-  NC, //Not Cool Stuff
+  UC, //Not Cool Stuff
 }

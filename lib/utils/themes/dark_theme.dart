@@ -9,7 +9,7 @@ ThemeData darkTheme() {
       appBarTheme: appBarTheme(),
       textTheme: textTheme(),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      cardColor: Styles.bgColorDark,
+      cardColor: Styles.primaryColorLight,
       canvasColor: Styles.bgColorDark.withOpacity(0.9),
       indicatorColor: Styles.primaryColor,
       colorScheme: ColorScheme.fromSeed(seedColor: Styles.primaryColorDark)
