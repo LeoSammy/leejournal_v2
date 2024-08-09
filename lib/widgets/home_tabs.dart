@@ -36,7 +36,7 @@ class HomeTabs extends StatelessWidget {
         child: Container(
           //height: size.height * 0.070,
           height: contHeight == 0 ? AppLayout.getHeight(55) : contHeight,
-          padding: EdgeInsets.all(AppLayout.getHeight(4)),
+          padding: EdgeInsets.all(AppLayout.getHeight(1.5)),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppLayout.getHeight(50)),
               color: Styles.whiteCold),
