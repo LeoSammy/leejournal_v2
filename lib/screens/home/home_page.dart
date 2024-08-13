@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:leejournal/screens/home/audio_view.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/components/draggable_bottom.dart';
 import 'package:leejournal/widgets/components/moment_body.dart';
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   // final _controller = DraggableScrollableController();
   late DraggableScrollableController _controller;
   String timeOfDay = tod;
+  late List<Widget> pages = [];
 
   @override
   void initState() {
@@ -41,6 +43,99 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     const String uName = "Leo";
+    //Initialize the pages used
+    pages = [
+      NestedScrollView(
+      headerSliverBuilder:
+          (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          SliverAppBar(
+              backgroundColor: Theme.of(context).cardColor,
+              automaticallyImplyLeading: false,
+              shape: ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(
+                          AppLayout.getHeight(10)),
+                      topRight: Radius.circular(
+                          AppLayout.getHeight(10)))),
+              pinned: true,
+              expandedHeight: AppLayout.getHeight(70),
+              flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  expandedTitleScale: 1.0,
+                  title: NormalText(
+                    text: "New Moment",
+                    color: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.color,
+                    fontWeight: FontWeight.w600,
+                  )),
+              actions: <Widget>[
+                IconButton(
+                    tooltip: "Save moment",
+                    style: ButtonStyle(
+                      shape: WidgetStateProperty.all<
+                          RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              AppLayout.getHeight(20)),
+                          side: BorderSide(
+                              width: 0.5,
+                              color: Styles.blueColor),
+                        ),
+                      ),
+                      backgroundColor:
+                      WidgetStateProperty.all<Color>(
+                          Styles.white200),
+                    ),
+                    onPressed: () {
+                      print("Save moment");
+                    },
+                    icon: Icon(
+                      FluentSystemIcons
+                          .ic_fluent_checkmark_regular,
+                      color: Styles.blueColor,
+                    )),
+              ]),
+        ];
+      },
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints:
+          BoxConstraints(minHeight: size.height * 0.50),
+          child: Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.only(
+                    bottomLeft:
+                    Radius.circular(AppLayout.getHeight(10)),
+                    bottomRight: Radius.circular(
+                        AppLayout.getHeight(10)))),
+            padding: EdgeInsets.only(
+                bottom: size.height * 0.10,
+                left: AppLayout.getHeight(10),
+                right: AppLayout.getHeight(10)),
+
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Divider(
+                  height: AppLayout.getHeight(8),
+                  thickness: AppLayout.getHeight(2),
+                  color: Theme.of(context).canvasColor,
+                ),
+                // Moment Body
+                MomentBody(
+                  initialText: "Add story...", initTitle: 'Add title...',
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    ), const AudioView()];
+
     return Scaffold(
       drawer: const NavBar(),
       body: Container(
@@ -167,96 +262,9 @@ class _HomePageState extends State<HomePage> {
                   child: Stack(
                 children: [
                   //Main body
-                  NestedScrollView(
-                    headerSliverBuilder:
-                        (BuildContext context, bool innerBoxIsScrolled) {
-                      return <Widget>[
-                        SliverAppBar(
-                            backgroundColor: Theme.of(context).cardColor,
-                            automaticallyImplyLeading: false,
-                            shape: ContinuousRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(
-                                        AppLayout.getHeight(10)),
-                                    topRight: Radius.circular(
-                                        AppLayout.getHeight(10)))),
-                            pinned: true,
-                            expandedHeight: AppLayout.getHeight(70),
-                            flexibleSpace: FlexibleSpaceBar(
-                                centerTitle: true,
-                                expandedTitleScale: 1.0,
-                                title: NormalText(
-                                  text: "New Moment",
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.color,
-                                  fontWeight: FontWeight.w600,
-                                )),
-                            actions: <Widget>[
-                              IconButton(
-                                  tooltip: "Save moment",
-                                  style: ButtonStyle(
-                                    shape: WidgetStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(
-                                            AppLayout.getHeight(20)),
-                                        side: BorderSide(
-                                            width: 0.5,
-                                            color: Styles.blueColor),
-                                      ),
-                                    ),
-                                    backgroundColor:
-                                        WidgetStateProperty.all<Color>(
-                                            Styles.white200),
-                                  ),
-                                  onPressed: () {
-                                    print("Save moment");
-                                  },
-                                  icon: Icon(
-                                    FluentSystemIcons
-                                        .ic_fluent_checkmark_regular,
-                                    color: Styles.blueColor,
-                                  )),
-                            ]),
-                      ];
-                    },
-                    body: SingleChildScrollView(
-                      child: ConstrainedBox(
-                        constraints:
-                            BoxConstraints(minHeight: size.height * 0.50),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).cardColor,
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft:
-                                      Radius.circular(AppLayout.getHeight(10)),
-                                  bottomRight: Radius.circular(
-                                      AppLayout.getHeight(10)))),
-                          padding: EdgeInsets.only(
-                              bottom: size.height * 0.10,
-                              left: AppLayout.getHeight(10),
-                              right: AppLayout.getHeight(10)),
-
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Divider(
-                                height: AppLayout.getHeight(8),
-                                thickness: AppLayout.getHeight(2),
-                                color: Theme.of(context).canvasColor,
-                              ),
-                              // Moment Body
-                              MomentBody(
-                                initialText: "Add story...", initTitle: 'Add title...',
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                 PageView(
+                   children:pages,
+                 ),
                   //journal switch
                   Align(
                     alignment: Alignment.bottomCenter,

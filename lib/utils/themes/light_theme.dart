@@ -11,7 +11,7 @@ ThemeData lightTheme(){
     appBarTheme: appBarTheme(),
     cardColor: Styles.whiteCold,
     canvasColor: Styles.white100,
-    indicatorColor: Styles.primaryColor,
+    indicatorColor: Styles.white,
     textTheme: textTheme(),
 
   );

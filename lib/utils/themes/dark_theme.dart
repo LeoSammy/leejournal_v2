@@ -11,7 +11,7 @@ ThemeData darkTheme() {
       visualDensity: VisualDensity.adaptivePlatformDensity,
       cardColor: Styles.primaryColorLight,
       canvasColor: Styles.bgColorDark.withOpacity(0.9),
-      indicatorColor: Styles.primaryColor,
+      indicatorColor: Styles.primaryColorLight,
       colorScheme: ColorScheme.fromSeed(seedColor: Styles.primaryColorDark)
     // colorScheme: ColorScheme.dark(
     //     background: Styles.bgColorDark,
