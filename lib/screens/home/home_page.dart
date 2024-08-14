@@ -23,21 +23,52 @@ class _HomePageState extends State<HomePage> {
   // final _sheet = GlobalKey();
   // final _controller = DraggableScrollableController();
   late DraggableScrollableController _controller;
+  late PageController pageController;
+  int _currentPage = 0;
+
   String timeOfDay = tod;
   late List<Widget> pages = [];
+  bool _isActiveA = true;
+  bool _isActiveB = false;
+
+  bool _isActiveTabA = true;
+  bool _isActiveTabB = false;
+
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    pageController = PageController(
+      keepPage: true,
+    );
     _controller = DraggableScrollableController();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    pageController.dispose();
     super.dispose();
   }
+  void _toggleActiveWidget(){
+    setState(() {
+      _isActiveA = !_isActiveA;
+      _isActiveB = !_isActiveB;
+
+      _currentPage = (_currentPage + 1) % 2;
+      pageController.animateToPage(_currentPage,
+          duration: const Duration(milliseconds: 250),
+          curve: Curves.easeInOut);
+    });
+  }
+
+  void _toggleActiveTab(){
+    setState(() {
+      _isActiveTabA = !_isActiveTabA;
+      _isActiveTabB = !_isActiveTabB;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -263,20 +294,31 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   //Main body
                  PageView(
+                   controller: pageController,
+                    physics: const NeverScrollableScrollPhysics(),
+                    onPageChanged: (page){
+                     print(page);
+                     //create function to switch bottom tab when page is scrolled horizontally
+                    },
                    children:pages,
                  ),
                   //journal switch
+
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       padding: EdgeInsets.only(bottom: size.height * 0.060),
                       child: HomeTabs(
+                          contHeight: AppLayout.getHeight(52),
                           hTabsWidth: size.width * 0.125,
                           showWidget: true,
                           hWidgetA: InkWell(
-                            onTap: () {
-                              print("show text-pad page");
-                            },
+                        onTap:  _toggleActiveWidget,
+                            //     () {
+                            //   _toggleActiveWidget;
+                            //   print(_isActive);
+                            //   print("show text-pad page");
+                            // },
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Icon(
@@ -288,10 +330,9 @@ class _HomePageState extends State<HomePage> {
                                       ?.color),
                             ),
                           ),
+                        aColor:_isActiveA ? Theme.of(context).canvasColor : Colors.transparent,
                           hWidgetB: InkWell(
-                            onTap: () {
-                              print("show microphone page");
-                            },
+                            onTap: _toggleActiveWidget,
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Icon(
@@ -302,8 +343,8 @@ class _HomePageState extends State<HomePage> {
                                       ?.color),
                             ),
                           ),
-                          isActiveA: false,
-                          isActiveB: false),
+                        bColor: _isActiveB ? Theme.of(context).canvasColor : Colors.transparent,
+                       ),
                     ),
                   ),
                   // Mood selector
@@ -316,11 +357,11 @@ class _HomePageState extends State<HomePage> {
                     alignment: Alignment.topCenter,
                     child: Container(
                       margin: EdgeInsets.only(top: AppLayout.getHeight(5)),
-                      child: const HomeTabs(
+                      child: HomeTabs(
+                        aColor: _isActiveTabA ? Theme.of(context).canvasColor : Colors.transparent,
+                        bColor: _isActiveTabB ? Theme.of(context).canvasColor :  Colors.transparent,
                         firstTab: "Journal",
                         secondTab: "Speak2Note",
-                        isActiveA: false,
-                        isActiveB: false,
                       ),
                     ),
                   ),
@@ -330,5 +371,11 @@ class _HomePageState extends State<HomePage> {
           )),
       bottomSheet: DraggableBottom(controller: _controller),
     );
+  }
+
+
+  switchMemoAudio(){
+   var view =   pageController.page;
+   return view;
   }
 }

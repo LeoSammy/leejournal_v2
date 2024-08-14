@@ -5,22 +5,21 @@ import 'package:leejournal/widgets/normal_text.dart';
 class HomeTabs extends StatelessWidget {
   final String? firstTab;
   final String? secondTab;
-  final bool isActiveA;
-  final bool isActiveB;
   final bool showWidget;
   final Widget? hWidgetA;
   final Widget? hWidgetB;
   final double? hTabsWidth;
   final double? contHeight;
+  final Color? aColor, bColor;
 
   const HomeTabs({super.key,
     this.firstTab,
     this.secondTab,
-    required this.isActiveA,
-    required this.isActiveB,
     this.showWidget = false,
     this.hWidgetA,
     this.hWidgetB,
+    this.aColor,
+    this.bColor,
     this.hTabsWidth,
     this.contHeight,
   });
@@ -50,10 +49,10 @@ class HomeTabs extends StatelessWidget {
                     borderRadius: BorderRadius.horizontal(
                         right: Radius.circular(AppLayout.getHeight(50)),
                         left: Radius.circular(AppLayout.getHeight(50))),
-                    color: Theme.of(context).canvasColor),
+                    color: aColor),
                 child:  Center(
                     child:  showWidget != false ? hWidgetA : NormalText(
-                   active: isActiveA,
+                 //  active: isActiveA,
                   text: firstTab!,
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).textTheme.bodyLarge?.color)),
@@ -63,15 +62,15 @@ class HomeTabs extends StatelessWidget {
                 padding:
                 EdgeInsets.symmetric(vertical: AppLayout.getHeight(10)),
                 decoration: BoxDecoration(
-                  color: Colors.transparent,
                   borderRadius: BorderRadius.horizontal(
                       right: Radius.circular(AppLayout.getHeight(50)),
                       left: Radius.circular(AppLayout.getHeight(50)),
                   ),
+                  color: bColor,
                 ),
                 child: Center(
                     child: showWidget != false ? hWidgetB : NormalText(
-                     active: isActiveB,
+                  //   active: isActiveB,
                     text: secondTab!,
                   fontWeight: FontWeight.w500,
                   color: Theme.of(context).textTheme.bodyLarge?.color)),

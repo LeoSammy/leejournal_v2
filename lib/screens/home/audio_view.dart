@@ -300,9 +300,9 @@ class _AudioViewState extends State<AudioView> {
     final size = AppLayout.getSize(context);
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(top: size.height * 0.060),
-        height: size.height * 0.50,
-        padding: const EdgeInsets.all(8.0),
+        margin: EdgeInsets.only(top: size.height * 0.080),
+        height: 310,
+        padding: const EdgeInsets.all(4.0),
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 600),
           transitionBuilder: (Widget child, Animation<double> animation) {
@@ -403,7 +403,7 @@ class _AudioViewState extends State<AudioView> {
                                  //   recorder.soundRecorder!.isRecording
                                   size == 0
                                         ? Icons.stop
-                                        : Icons.mic_external_off_outlined,
+                                        :  FluentSystemIcons.ic_fluent_mic_on_regular,
                                     size: AppLayout.getHeight(15),
                                     style: const NeumorphicStyle(
                                         color: Styles.mainAppDarkMode)),
@@ -414,7 +414,7 @@ class _AudioViewState extends State<AudioView> {
                           Gap(AppLayout.getHeight(10)),
                           NormalText(
                             text: moodText,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Theme.of(context).textTheme.titleMedium!.color,
                           ),
                         ],
