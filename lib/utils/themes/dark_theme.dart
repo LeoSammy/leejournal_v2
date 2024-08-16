@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:leejournal/utils/styles.dart';
 
 ThemeData darkTheme() {
@@ -10,9 +9,9 @@ ThemeData darkTheme() {
       appBarTheme: appBarTheme(),
       textTheme: textTheme(),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      cardColor: Styles.bgColorDark,
-      canvasColor: Styles.bgColorDark,
-      indicatorColor: Styles.primaryColor,
+      cardColor: Styles.primaryColorLight,
+      canvasColor: Styles.bgColorDark.withOpacity(0.9),
+      indicatorColor: Styles.primaryColorLight,
       colorScheme: ColorScheme.fromSeed(seedColor: Styles.primaryColorDark)
     // colorScheme: ColorScheme.dark(
     //     background: Styles.bgColorDark,

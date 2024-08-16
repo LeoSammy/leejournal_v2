@@ -4,9 +4,10 @@ class Styles{
   static Color primaryColor = const Color(0xFFEE7E1C);
   static Color primaryColorLight = const Color(0xFFF2994C);
   static Color primaryColorDark =const  Color(0xFFB0590D);
-  static Color bgColorDark = const  Color(0xFF4F3423);
+  static Color bgColorDark = const  Color(0xFF9F500C);
   static Color textColor = const Color(0xFF3b3b3b);
   static Color bgColor = const Color(0xFFF6F7F9);
+  static Color whiteCold = const Color(0xFFF8FAFD);
   static Color corkDark = const Color(0xFF1F1F1F);
   static Color inactiveColor = const Color(0xFFBAB4B4);
   static Color orangeColor = const Color(0xFFF37B67);
