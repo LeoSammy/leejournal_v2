@@ -48,8 +48,8 @@ class _AudioViewState extends State<AudioView> {
           style: NeumorphicStyle(
             shape: NeumorphicShape.convex,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(100)),
-            border: const NeumorphicBorder(
-                width: 0.5, color: Styles.mainAppPaynesGray),
+            // border: const NeumorphicBorder(
+            //     width: 0.5, color: Styles.mainAppPaynesGray),
             depth: 5,
             intensity: 0.50,
             surfaceIntensity: 0.25,
@@ -57,8 +57,8 @@ class _AudioViewState extends State<AudioView> {
             color: Theme.of(context).indicatorColor,
           ),
           child: SizedBox(
-              height: AppLayout.getHeight(180),
-              width: AppLayout.getWidth(180),
+              height: AppLayout.getHeight(190),
+              width: AppLayout.getWidth(190),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,16 +75,20 @@ class _AudioViewState extends State<AudioView> {
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.convex,
                           border: NeumorphicBorder(
-                              width: 3,
-                              color:Styles.mainAppPaynesGray),
+                              width: 1.5,
+                              //color:Styles.mainAppPaynesGray
+                              color:Styles.white
+                          ),
                           depth: 5,
                           boxShape: NeumorphicBoxShape.circle(),
                         ),
                         padding: const EdgeInsets.all(8.0),
                         child: NeumorphicIcon(FluentSystemIcons.ic_fluent_video_regular,
-                            size:AppLayout.getHeight(15),
+                            size: AppLayout.getHeight(18),
                             style: const NeumorphicStyle(
-                                color: Styles.mainAppDarkMode)),
+                                color: Styles.mainAppPaynesGray
+                               // color: Styles.mainAppDarkMode
+                            )),
                       ),
                       Gap(AppLayout.getHeight(8)),
                       // recordAudio(AppColor.mainAppPaynesGray),
@@ -97,16 +101,20 @@ class _AudioViewState extends State<AudioView> {
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.convex,
                           border: NeumorphicBorder(
-                              width: 3,
-                              color: Styles.mainAppPaynesGray),
+                              width: 1.5,
+                             // color: Styles.mainAppPaynesGray
+                              color: Styles.white
+                          ),
                           depth: 5,
                           boxShape: NeumorphicBoxShape.circle(),
                         ),
                         padding: const EdgeInsets.all(8.0),
                         child: NeumorphicIcon( FluentSystemIcons.ic_fluent_mic_on_regular,
-                            size: AppLayout.getHeight(15),
+                            size: AppLayout.getHeight(18),
                             style: const NeumorphicStyle(
-                                color: Styles.mainAppDarkMode)),
+                                color: Styles.mainAppPaynesGray
+                                //color: Styles.mainAppDarkMode
+                            )),
                       )
                     ],
                   ),
@@ -134,8 +142,8 @@ class _AudioViewState extends State<AudioView> {
           style: NeumorphicStyle(
             shape: NeumorphicShape.convex,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(100)),
-            border: const NeumorphicBorder(
-                width: 0.5, color: Styles.mainAppPurpleMunsell),
+            // border: const NeumorphicBorder(
+            //     width: 0.5, color: Styles.mainAppPurpleMunsell),
             depth: 5,
             intensity: 0.50,
             surfaceIntensity: 0.25,
@@ -143,8 +151,8 @@ class _AudioViewState extends State<AudioView> {
               color: Theme.of(context).indicatorColor,
           ),
           child: SizedBox(
-              height: AppLayout.getHeight(180),
-              width: AppLayout.getWidth(180),
+              height: AppLayout.getHeight(190),
+              width: AppLayout.getWidth(190),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,16 +169,20 @@ class _AudioViewState extends State<AudioView> {
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.convex,
                           border: NeumorphicBorder(
-                              width: 3,
-                              color: Styles.mainAppPurpleMunsell),
+                              width: 1.5,
+                              color: Styles.white
+                             // color: Styles.mainAppPurpleMunsell
+                          ),
                           depth: 5,
                           boxShape: NeumorphicBoxShape.circle(),
                         ),
                         padding: const EdgeInsets.all(8.0),
                         child: NeumorphicIcon(FluentSystemIcons.ic_fluent_video_regular,
-                            size: AppLayout.getHeight(15),
+                            size: AppLayout.getHeight(18),
                             style: const NeumorphicStyle(
-                                color: Styles.mainAppDarkMode)),
+                                color: Styles.mainAppPurpleMunsell
+                                //color: Styles.mainAppDarkMode
+                            )),
                       ),
                       Gap(AppLayout.getHeight(8)),
                       //   recordAudio(AppColor.mainAppPurpleMunsell)
@@ -183,16 +195,20 @@ class _AudioViewState extends State<AudioView> {
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.convex,
                           border: NeumorphicBorder(
-                              width:3,
-                              color: Styles.mainAppPurpleMunsell),
+                              width: 1.5,
+                              color: Styles.white
+                             // color: Styles.mainAppPurpleMunsell
+                          ),
                           depth: 5,
                           boxShape: NeumorphicBoxShape.circle(),
                         ),
                         padding: const EdgeInsets.all(8.0),
                         child: NeumorphicIcon( FluentSystemIcons.ic_fluent_mic_on_regular,
-                            size: AppLayout.getHeight(15),
+                            size: AppLayout.getHeight(18),
                             style: const NeumorphicStyle(
-                                color: Styles.mainAppDarkMode)),
+                                color: Styles.mainAppPurpleMunsell
+                               // color: Styles.mainAppDarkMode
+                            )),
                       )
                     ],
                   ),
@@ -218,8 +234,10 @@ class _AudioViewState extends State<AudioView> {
           style: NeumorphicStyle(
             shape: NeumorphicShape.convex,
             boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(100)),
-            border: const NeumorphicBorder(
-                width: 0.5, color:Styles.mainAppYellowGlow),
+            // border: const NeumorphicBorder(
+            //     width: 0.5,
+            //     color:Styles.mainAppYellowGlow
+            // ),
             depth: 5,
             intensity: 0.50,
             surfaceIntensity: 0.25,
@@ -227,8 +245,8 @@ class _AudioViewState extends State<AudioView> {
             color: Theme.of(context).indicatorColor,
           ),
           child: SizedBox(
-              height: AppLayout.getHeight(180),
-              width: AppLayout.getWidth(180),
+              height: AppLayout.getHeight(190),
+              width: AppLayout.getWidth(190),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -245,16 +263,20 @@ class _AudioViewState extends State<AudioView> {
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.convex,
                           border: NeumorphicBorder(
-                              width: 3,
-                              color: Styles.mainAppYellowGlow),
+                              width: 1.5,
+                              color: Styles.white
+                             // color: Styles.mainAppYellowGlow
+                          ),
                           depth: 5,
                           boxShape: NeumorphicBoxShape.circle(),
                         ),
                         padding: const EdgeInsets.all(8.0),
                         child: NeumorphicIcon(FluentSystemIcons.ic_fluent_video_regular,
-                            size: AppLayout.getHeight(15),
+                            size: AppLayout.getHeight(18),
                             style: const NeumorphicStyle(
-                                color: Styles.mainAppDarkMode)),
+                                color: Styles.mainAppYellowGlow
+                               // color: Styles.mainAppDarkMode
+                            )),
                       ),
                       Gap(AppLayout.getWidth(8)),
                       NeumorphicButton(
@@ -266,17 +288,21 @@ class _AudioViewState extends State<AudioView> {
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.convex,
                           border: NeumorphicBorder(
-                              width: 3,
-                              color: Styles.mainAppYellowGlow),
+                              width: 1.5,
+                              color: Styles.white
+                              //color: Styles.mainAppYellowGlow
+                          ),
                           depth: 5,
                           boxShape: NeumorphicBoxShape.circle(),
                         ),
                         padding: const EdgeInsets.all(8.0),
                         child: NeumorphicIcon(
   FluentSystemIcons.ic_fluent_mic_on_regular,
-                            size: AppLayout.getHeight(15),
+                            size: AppLayout.getHeight(18),
                             style: const NeumorphicStyle(
-                                color: Styles.mainAppDarkMode)),
+                                color: Styles.mainAppYellowGlow
+                               // color: Styles.mainAppDarkMode
+                            )),
                         // child:Icon( recorder.soundRecorder.isRecording ? AppIcons.stop: AppIcons.mic_1),
                       )
                     ],
@@ -301,7 +327,7 @@ class _AudioViewState extends State<AudioView> {
     return SingleChildScrollView(
       child: Container(
         margin: EdgeInsets.only(top: size.height * 0.080),
-        height: 310,
+        height: 320,
         padding: const EdgeInsets.all(4.0),
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 600),
@@ -376,8 +402,8 @@ class _AudioViewState extends State<AudioView> {
                       color: Theme.of(context).indicatorColor,
                   ),
                   child: SizedBox(
-                      height: AppLayout.getHeight(180),
-                      width: AppLayout.getWidth(180),
+                      height: AppLayout.getHeight(190),
+                      width: AppLayout.getWidth(190),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -404,7 +430,7 @@ class _AudioViewState extends State<AudioView> {
                                   size == 0
                                         ? Icons.stop
                                         :  FluentSystemIcons.ic_fluent_mic_on_regular,
-                                    size: AppLayout.getHeight(15),
+                                    size: AppLayout.getHeight(18),
                                     style: const NeumorphicStyle(
                                         color: Styles.mainAppDarkMode)),
                                 // child:Icon( recorder.soundRecorder.isRecording ? AppIcons.stop: AppIcons.mic_1),
