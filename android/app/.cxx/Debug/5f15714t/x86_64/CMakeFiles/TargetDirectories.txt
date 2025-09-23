@@ -1,0 +1,2 @@
+/home/leo/Projects/FlutterProjects/leejournal/android/app/.cxx/Debug/5f15714t/x86_64/CMakeFiles/edit_cache.dir
+/home/leo/Projects/FlutterProjects/leejournal/android/app/.cxx/Debug/5f15714t/x86_64/CMakeFiles/rebuild_cache.dir

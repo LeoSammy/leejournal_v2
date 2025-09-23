@@ -215,7 +215,6 @@ class _HomePageState extends State<HomePage> {
                                 right: AppLayout.getHeight(10)),
                             onPressed: () {
                               Scaffold.of(context).openDrawer();
-                              print("Scaffold drawer called ");
                             },
                             icon: SizedBox(
                               height: AppLayout.getHeight(45),

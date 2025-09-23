@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Styles{
-  static Color primaryColor = const Color(0xFFEE7E1C);
-  static Color primaryColorLight = const Color(0xFFF2994C);
-  static Color primaryColorDark =const  Color(0xFFB0590D);
-  static Color bgColorDark = const  Color(0xFF9F500C);
+  static Color primaryColor = const Color(0xFF2596be);
+  static Color primaryColorLight = const Color(0xFF66b6d2);
+  static Color primaryColorDark =const  Color(0xFF0f3c4c);
+  static Color bgColorDark = const  Color(0xFF071e26);
   static Color textColor = const Color(0xFF3b3b3b);
   static Color bgColor = const Color(0xFFF6F7F9);
   static Color whiteCold = const Color(0xFFF8FAFD);
@@ -13,7 +13,7 @@ class Styles{
   static Color orangeColor = const Color(0xFFF37B67);
   static Color blueColor = const  Color(0xFF526799);
   static Color kakiColor = const  Color(0xFFd2bdb6);
-  static Color goldColor = const  Color(0xFFFF9A2F);
+  static Color goldColor = const  Color(0xFF51abcb);
   static Color textColorLight = const Color(0xFFA7A7A7);
   static Color iconColor = const  Color(0xFF49C9AC);
   static Color white100 = const Color(0xFFE7ECF2);

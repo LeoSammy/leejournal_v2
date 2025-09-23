@@ -1,6 +1,6 @@
 
 import 'package:fluentui_icons/fluentui_icons.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/components/speak2note_body.dart';
@@ -64,7 +64,7 @@ class Speak2Note extends StatelessWidget {
                             },
                             icon: Icon(
                               FluentSystemIcons
-                                  .ic_fluent_share_ios_regular,
+                                  .ic_fluent_share_android_regular,
                               color: Styles.blueColor,
                             )),
                       ]),

@@ -1,5 +1,5 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:gap/gap.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/widgets.dart';
@@ -54,7 +54,7 @@ class _AudioViewState extends State<AudioView> {
             intensity: 0.50,
             surfaceIntensity: 0.25,
             lightSource: LightSource.topLeft,
-            color: Theme.of(context).indicatorColor,
+            color: Theme.of(context).indicatorColor.withOpacity(0.8),
           ),
           child: SizedBox(
               height: AppLayout.getHeight(190),
@@ -148,7 +148,7 @@ class _AudioViewState extends State<AudioView> {
             intensity: 0.50,
             surfaceIntensity: 0.25,
             lightSource: LightSource.topLeft,
-              color: Theme.of(context).indicatorColor,
+              color: Theme.of(context).indicatorColor.withOpacity(0.8),
           ),
           child: SizedBox(
               height: AppLayout.getHeight(190),
@@ -242,7 +242,7 @@ class _AudioViewState extends State<AudioView> {
             intensity: 0.50,
             surfaceIntensity: 0.25,
             lightSource: LightSource.topLeft,
-            color: Theme.of(context).indicatorColor,
+            color: Theme.of(context).indicatorColor.withOpacity(0.8),
           ),
           child: SizedBox(
               height: AppLayout.getHeight(190),

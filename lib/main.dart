@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:leejournal/screens/home/home_page.dart';
 import 'package:leejournal/utils/themes/dark_theme.dart';
 import 'package:leejournal/utils/themes/light_theme.dart';
@@ -11,7 +12,7 @@ Future <void> main() async {
   //await deb.initDependencies();
   //await GetStorage.init();
   runApp(DevicePreview(
-    enabled: !kReleaseMode,
+    enabled: false,
     builder: (context) => const LeeJournalApp(), // Wrap your app
   ),
   );
@@ -34,7 +35,7 @@ class LeeJournalApp extends StatelessWidget {
     final themeLight = lightTheme();
     final themeDark = darkTheme();
 
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LeeJournal',
       locale: DevicePreview.locale(context),
