@@ -11,8 +11,10 @@ class HomeTabs extends StatelessWidget {
   final double? hTabsWidth;
   final double? contHeight;
   final Color? aColor, bColor;
+  final Function()? onTapA, onTapB;
 
-  const HomeTabs({super.key,
+  const HomeTabs({
+    super.key,
     this.firstTab,
     this.secondTab,
     this.showWidget = false,
@@ -22,6 +24,8 @@ class HomeTabs extends StatelessWidget {
     this.bColor,
     this.hTabsWidth,
     this.contHeight,
+    this.onTapA,
+    this.onTapB,
   });
 
   @override
@@ -30,7 +34,7 @@ class HomeTabs extends StatelessWidget {
     return FittedBox(
       child: Material(
         borderRadius: BorderRadius.circular(AppLayout.getHeight(50)),
-        color: Styles.whiteCold,
+        color:Theme.of(context).cardColor,
         elevation: 2,
         child: Container(
           //height: size.height * 0.070,
@@ -38,42 +42,63 @@ class HomeTabs extends StatelessWidget {
           padding: EdgeInsets.all(AppLayout.getHeight(1.5)),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppLayout.getHeight(50)),
-              color: Styles.whiteCold),
+              color: Theme.of(context).cardColor),
           child: Row(
             children: [
-              Container(
-                width: showWidget != false ? hTabsWidth : size.width * 0.30,
-                padding:
-                EdgeInsets.symmetric(vertical: AppLayout.getHeight(10)) ,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(AppLayout.getHeight(50)),
-                        left: Radius.circular(AppLayout.getHeight(50))),
-                    color: aColor),
-                child:  Center(
-                    child:  showWidget != false ? hWidgetA : NormalText(
-                 //  active: isActiveA,
-                  text: firstTab!,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).textTheme.bodyLarge?.color)),
-              ),
-              Container(
-                width: showWidget != false ? hTabsWidth : size.width * 0.30,
-                padding:
-                EdgeInsets.symmetric(vertical: AppLayout.getHeight(10)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.horizontal(
-                      right: Radius.circular(AppLayout.getHeight(50)),
-                      left: Radius.circular(AppLayout.getHeight(50)),
-                  ),
-                  color: bColor,
+              InkWell(
+                onTap: onTapA,
+                borderRadius: BorderRadius.horizontal(
+                    right: Radius.circular(AppLayout.getHeight(50)),
+                    left: Radius.circular(AppLayout.getHeight(50))),
+                child: Container(
+                  width: showWidget != false ? hTabsWidth : size.width * 0.30,
+                  padding:
+                      EdgeInsets.symmetric(vertical: AppLayout.getHeight(10)),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(AppLayout.getHeight(50)),
+                          left: Radius.circular(AppLayout.getHeight(50))),
+                      color: aColor),
+                  child: Center(
+                      child: showWidget != false
+                          ? hWidgetA
+                          : NormalText(
+                                  //  active: isActiveA,
+                                  text: firstTab!,
+                                  fontWeight: FontWeight.w500,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge
+                                      ?.color),
+                            ),
                 ),
-                child: Center(
-                    child: showWidget != false ? hWidgetB : NormalText(
-                  //   active: isActiveB,
-                    text: secondTab!,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).textTheme.bodyLarge?.color)),
+              ),
+              InkWell(
+                onTap: onTapB,
+                borderRadius: BorderRadius.horizontal(
+                    right: Radius.circular(AppLayout.getHeight(50)),
+                    left: Radius.circular(AppLayout.getHeight(50))),
+                child: Container(
+                    width: showWidget != false ? hTabsWidth : size.width * 0.30,
+                    padding:
+                        EdgeInsets.symmetric(vertical: AppLayout.getHeight(10)),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.horizontal(
+                        right: Radius.circular(AppLayout.getHeight(50)),
+                        left: Radius.circular(AppLayout.getHeight(50)),
+                      ),
+                      color: bColor,
+                    ),
+                    child: Center(
+                      child: showWidget != false
+                          ? hWidgetB
+                          : NormalText(
+                              //   active: isActiveB,
+                              text: secondTab!,
+                              fontWeight: FontWeight.w500,
+                              color:
+                                  Theme.of(context).textTheme.bodyLarge?.color),
+                    )),
               )
             ],
           ),

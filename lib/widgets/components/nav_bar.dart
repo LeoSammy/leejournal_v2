@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:leejournal/screens/calendar/calendar_view.dart';
 import 'package:leejournal/screens/listings/record_listings.dart';
+import 'package:leejournal/screens/profile/profile.dart';
 import 'package:leejournal/screens/scheduler/scheduler_page.dart';
-import 'package:leejournal/screens/settings/settings_page.dart';
 import 'package:leejournal/screens/stats/stats_view.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/widgets.dart';
@@ -51,8 +52,11 @@ class NavBar extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           InkWell(
-                            onTap: () => {Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => const SettingsPage()))},
+                            // onTap: () => {Navigator.of(context).push(
+                            //     MaterialPageRoute(builder: (context) => const ProfilePage()))},
+                            onTap: (){
+                              Get.to(() => const ProfilePage());
+                            },
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Material(

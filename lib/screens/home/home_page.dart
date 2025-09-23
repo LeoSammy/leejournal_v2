@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:leejournal/screens/home/audio_view.dart';
+import 'package:leejournal/screens/speak2Note/speak2note.dart';
 import 'package:leejournal/utils/utils.dart';
 import 'package:leejournal/widgets/components/draggable_bottom.dart';
 import 'package:leejournal/widgets/components/moment_body.dart';
@@ -23,16 +24,18 @@ class _HomePageState extends State<HomePage> {
   // final _sheet = GlobalKey();
   // final _controller = DraggableScrollableController();
   late DraggableScrollableController _controller;
-  late PageController pageController;
+  late PageController tabController, pageController;
   int _currentPage = 0;
+  int _currentPageA = 0;
 
   String timeOfDay = tod;
-  late List<Widget> pages = [];
+  late List<Widget> pagesJournal = [];
   bool _isActiveA = true;
   bool _isActiveB = false;
 
   bool _isActiveTabA = true;
   bool _isActiveTabB = false;
+  bool _visibilityObs = false;
 
 
   @override
@@ -41,12 +44,16 @@ class _HomePageState extends State<HomePage> {
     pageController = PageController(
       keepPage: true,
     );
+    tabController = PageController(
+      keepPage: true
+    );
     _controller = DraggableScrollableController();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    tabController.dispose();
     pageController.dispose();
     super.dispose();
   }
@@ -66,7 +73,18 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _isActiveTabA = !_isActiveTabA;
       _isActiveTabB = !_isActiveTabB;
+
+      _currentPageA = (_currentPageA + 1) % 2;
+      tabController.animateToPage(_currentPageA,
+          duration: const Duration(milliseconds: 250),
+          curve: Curves.easeInOut);
     });
+  }
+
+  void _hideJournalSwitch(bool visibility){
+     setState(() {
+       _visibilityObs = visibility;
+     });
   }
 
 
@@ -75,7 +93,7 @@ class _HomePageState extends State<HomePage> {
     final size = AppLayout.getSize(context);
     const String uName = "Leo";
     //Initialize the pages used
-    pages = [
+    pagesJournal = [
       NestedScrollView(
       headerSliverBuilder:
           (BuildContext context, bool innerBoxIsScrolled) {
@@ -197,7 +215,6 @@ class _HomePageState extends State<HomePage> {
                                 right: AppLayout.getHeight(10)),
                             onPressed: () {
                               Scaffold.of(context).openDrawer();
-                              print("Scaffold drawer called ");
                             },
                             icon: SizedBox(
                               height: AppLayout.getHeight(45),
@@ -294,61 +311,63 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   //Main body
                  PageView(
-                   controller: pageController,
-                    physics: const NeverScrollableScrollPhysics(),
-                    onPageChanged: (page){
-                     print(page);
-                     //create function to switch bottom tab when page is scrolled horizontally
-                    },
-                   children:pages,
+                   controller: tabController,
+                     physics: const NeverScrollableScrollPhysics(),
+                   children: [
+                     PageView(
+                     controller: pageController,
+                     physics: const NeverScrollableScrollPhysics(),
+                     children:pagesJournal,
+                   ),
+                    const Speak2Note()
+                   ]
                  ),
                   //journal switch
-
-                  Align(
+                  _visibilityObs ?  Container() :  Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       padding: EdgeInsets.only(bottom: size.height * 0.060),
                       child: HomeTabs(
-                          contHeight: AppLayout.getHeight(52),
-                          hTabsWidth: size.width * 0.125,
-                          showWidget: true,
-                          hWidgetA: InkWell(
-                        onTap:  _toggleActiveWidget,
-                            //     () {
-                            //   _toggleActiveWidget;
-                            //   print(_isActive);
-                            //   print("show text-pad page");
-                            // },
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Icon(
-                                  FluentSystemIcons
-                                      .ic_fluent_pen_settings_regular,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.color),
-                            ),
+                        contHeight: AppLayout.getHeight(52),
+                        hTabsWidth: size.width * 0.125,
+                        showWidget: true,
+                        hWidgetA: InkWell(
+                          onTap:  _toggleActiveWidget,
+                          //     () {
+                          //   _toggleActiveWidget;
+                          //   print(_isActive);
+                          //   print("show text-pad page");
+                          // },
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Icon(
+                                FluentSystemIcons
+                                    .ic_fluent_pen_settings_regular,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.color),
                           ),
+                        ),
                         aColor:_isActiveA ? Theme.of(context).canvasColor : Colors.transparent,
-                          hWidgetB: InkWell(
-                            onTap: _toggleActiveWidget,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Icon(
-                                  FluentSystemIcons.ic_fluent_mic_on_regular,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyLarge
-                                      ?.color),
-                            ),
+                        hWidgetB: InkWell(
+                          onTap: _toggleActiveWidget,
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Icon(
+                                FluentSystemIcons.ic_fluent_mic_on_regular,
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.color),
                           ),
+                        ),
                         bColor: _isActiveB ? Theme.of(context).canvasColor : Colors.transparent,
-                       ),
+                      ),
                     ),
                   ),
                   // Mood selector
-                  const Align(
+                  _visibilityObs ? Container() : const Align(
                     alignment: Alignment.topRight,
                     child: MoodView(),
                   ),
@@ -362,6 +381,14 @@ class _HomePageState extends State<HomePage> {
                         bColor: _isActiveTabB ? Theme.of(context).canvasColor :  Colors.transparent,
                         firstTab: "Journal",
                         secondTab: "Speak2Note",
+                        onTapA: () {
+                          _toggleActiveTab();
+                          _hideJournalSwitch(false);
+                        },
+                        onTapB: () {
+                          _toggleActiveTab();
+                          _hideJournalSwitch(true);
+                        },
                       ),
                     ),
                   ),
@@ -371,11 +398,5 @@ class _HomePageState extends State<HomePage> {
           )),
       bottomSheet: DraggableBottom(controller: _controller),
     );
-  }
-
-
-  switchMemoAudio(){
-   var view =   pageController.page;
-   return view;
   }
 }

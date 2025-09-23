@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.4 <4.0.0'
+  sdk: ^3.9.2
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -36,8 +36,10 @@ dependencies:
   gap: ^3.0.1
   fluentui_icons: ^1.0.0
   avatar_glow: ^2.0.2
-  flutter_neumorphic: ^3.2.0
+  flutter_neumorphic_plus: ^3.4.0
+  #flutter_neumorphic: ^3.2.0
   flutter_emoji: ^2.5.1
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -54,6 +56,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
